@@ -1,7 +1,7 @@
 import User = require("../models/user-model")
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
 
 const bcrypt = require("bcrypt");
 
@@ -19,27 +19,38 @@ const generateTokens = (userId: string): [string, string] => {
       return [accessToken, refreshToken]
 }
 
-
 const register = async (req: Request, res: Response) => {
-      console.log("register");
-      //validate email/password
+      console.log("Register");
+
+      // validate email/password
       const email = req.body.email;
       const password = req.body.password;
 
-      if (
-            email == null ||
-            email == undefined ||
-            password == null ||
-            password == undefined
-      ) {
+      if (email == null || email == undefined || password == null || password == undefined) {
             res.status(StatusCodes.BAD_REQUEST);
       }
-      const salt = await bcrypt.genSalt(10);
-      const newPassword = await bcrypt.hash(password, salt);
 
+      // check if email is already exists id DB
+      try {
+            const user = await User.findOne({'email': email})
+            if (user != null) {
+                  return res.status(StatusCodes.BAD_REQUEST).send('Email is already registered')
+            }
+      }
+      catch (err) {
+            return res.status(StatusCodes.BAD_REQUEST).send({
+                  'err': err.message
+            })
+      }
+
+      // encrypt password
+      const salt = await bcrypt.genSalt(10)
+      const encryptedPassword = await bcrypt.hash(password, salt)
+
+      // save user in database
       const user = new User({
             email: email,
-            password: newPassword,
+            password: encryptedPassword,
       });
       try {
             const newUser = await user.save();
@@ -64,7 +75,7 @@ const login = async (req: Request, res: Response) => {
       if (email == null || password == null) {
             return res
                   .status(StatusCodes.BAD_REQUEST)
-                  .send({ error: "wrong email or password" });
+                  .send({ error: "wrong email or password 1" });
       }
 
       try {
@@ -80,7 +91,7 @@ const login = async (req: Request, res: Response) => {
             if (!match) {
                   return res
                         .status(StatusCodes.BAD_REQUEST)
-                        .send({ error: "wrong email or password" });
+                        .send({ error: "wrong email or password 3" });
             }
 
             const [accessToken, refreshToken] = generateTokens(user._id)
