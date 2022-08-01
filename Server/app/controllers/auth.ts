@@ -34,11 +34,12 @@ const register = async (req: Request, res: Response) => {
       ) {
             res.status(StatusCodes.BAD_REQUEST);
       }
-
+      const salt = await bcrypt.genSalt(10);
+      const newPassword = await bcrypt.hash(password, salt);
 
       const user = new User({
             email: email,
-            password: password,
+            password: newPassword,
       });
       try {
             const newUser = await user.save();
@@ -72,7 +73,7 @@ const login = async (req: Request, res: Response) => {
             if (user == null) {
                   return res
                         .status(StatusCodes.BAD_REQUEST)
-                        .send({ error: "wrong email or password" });
+                        .send({ error: "user not existis" });
             }
 
             const match = await bcrypt.compare(password, user.password);

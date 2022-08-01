@@ -1,6 +1,13 @@
 {
     "compilerOptions": {
         "noImplicitAny": false,
-        "strictNullChecks": true
-    }
+        "strictNullChecks": true,
+        "target": "es6",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "dist",
+        "module": "commonjs",
+        "esModuleInterop": true,
+    },
+    "lib": ["es2015"]
 }
