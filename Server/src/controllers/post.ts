@@ -29,7 +29,8 @@ const createNewPost = async (req: Request, res: Response) => {
     }
     const myPost = new Post({
         message: req.body.message,
-        sender: sender
+        sender: sender,
+        imageUrl: req.body.imageUrl
     })
 
     try {
