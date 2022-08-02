@@ -23,8 +23,6 @@ app.use('/auth', auth_route);
 import post_route from './routes/post-routes'
 app.use('/post', post_route)
 
-// set port, listen for requests
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
-});
+import http from 'http';
+const server = http.createServer(app);
+export = server;

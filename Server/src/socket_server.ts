@@ -1,19 +1,15 @@
-import express from 'express'
-const app = express();
-import dotenv from 'dotenv'
-dotenv.config()
-import http from 'http'
-const server = http.createServer(app);
 import { Server } from 'socket.io'
-const io = new Server(server);
+import http from 'http'
 
-io.on('connection', (socket) => {
-    console.log('User Connected');
-    socket.on('disconnect', () => {
-        console.log('User Disconnected');
+const socketServer = (server: http.Server): Server => {
+    const io = new Server(server);
+    io.on('connection', (socket) => {
+        console.log('User Connected');
+        socket.on('disconnect', () => {
+            console.log('User Disconnected');
+        });
     });
-});
+    return io
+}
 
-server.listen(process.env.PORT, () => {
-    console.log('Listening On Port: ' + process.env.PORT);
-});
+export = socketServer
