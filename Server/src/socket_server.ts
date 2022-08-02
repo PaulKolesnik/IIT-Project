@@ -1,5 +1,6 @@
 import { Server } from 'socket.io'
 import http from 'http'
+import commonHandlers from './events/common'
 
 const socketServer = (server: http.Server): Server => {
     const io = new Server(server);
@@ -9,11 +10,8 @@ const socketServer = (server: http.Server): Server => {
         socket.on('disconnect', () => {
             console.log('User Disconnected');
         });
-        // Echo Event
-        socket.on('echo', (msg) =>{
-            console.log("Echo Event: " + msg)
-            socket.emit('echo', msg)
-        }) 
+        // Handlers
+        commonHandlers(io, socket)
     });
     return io
 }
