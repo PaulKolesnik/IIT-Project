@@ -1,28 +1,40 @@
-// ------------- AUTH -------------
+// -------------------------- AUTH --------------------------
+
+// ------ Register ------
 ###
 POST http://localhost:4000/auth/register
 Content-Type: application/json
 
 {
-    "email": "lia@gmail.com",
+    "email": "user@gmail.com",
     "password": "162534"
 }
+
+// ------ Login ------
 ###
 POST http://localhost:4000/auth/login
 Content-Type: application/json
 
 {
-    "email": "lia@gmail.com",
+    "email": "user@gmail.com",
     "password": "162534"
 }
 
-// ------------- POST -------------
+// -------------------------- POST --------------------------
+
+// ------ Get All Posts ------
 ###
 GET http://localhost:4000/post
+
+// ------ Get Posts By ID ------
 ###
 GET http://localhost:4000/post/62e28928cd145fd7e8e04204
+
+// ------ Get Posts By Sender ------
 ###
 GET http://localhost:4000/post?sender=Paul
+
+// ------ Create New Post ------
 ###
 POST http://localhost:4000/post
 Content-Type: application/json
