@@ -7,5 +7,6 @@ router.get('/', Post.getAllPosts)
 router.post('/', Post.createNewPost)
 router.get('/:id', Post.getPostById)
 router.delete('/:id', authenticate, Post.deletePostById)
+router.post('/update', Post.updatePost)
 
 export = router;

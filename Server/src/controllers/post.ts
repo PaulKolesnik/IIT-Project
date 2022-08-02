@@ -1,5 +1,6 @@
 import Post from '../models/post-model'
 import { Request, Response } from 'express'
+import { StatusCodes } from "http-status-codes";
 
 const getAllPosts = async (req: Request, res: Response) => {
     console.log('Get All Posts')
@@ -80,7 +81,7 @@ const deletePostById = async (req: Request, res: Response) => {
     }
 
     try {
-        await Post.deleteOne({"_id":req.params.id})
+        await Post.deleteOne({_id: req.params.id})
         res.status(200).send()
     }
     catch (err) {
@@ -90,10 +91,36 @@ const deletePostById = async (req: Request, res: Response) => {
     }
 }
 
+const updatePost = async (req: Request, res: Response) => {
+    console.log("Update A Post");
+    const postId = req.body._id
+    const postMessage = req.body.message
+    if (!!postId && !!postMessage) {
+        try {
+            const post = await Post.find({_id: postId})
+            if(!post) {
+                await Post.findOneAndUpdate({_id: postId}, {message: postMessage})
+                return res.status(StatusCodes.OK).send({
+                    'message': 'post updated'
+                })
+            }
+        }
+        catch (err) {
+            return res.status(StatusCodes.BAD_REQUEST).send({
+                error: err.message 
+            });
+        }
+    }
+    return res.status(StatusCodes.BAD_REQUEST).send({ 
+        error: "Didnt Get Post ID OR Post Message" 
+    });
+}
+
 export = 
 {
     getAllPosts, 
     createNewPost,
     getPostById,
-    deletePostById
+    deletePostById,
+    updatePost
 }

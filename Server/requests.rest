@@ -6,7 +6,7 @@ POST http://localhost:4000/auth/register
 Content-Type: application/json
 
 {
-    "email": "user2@gmail.com",
+    "email": "user4@gmail.com",
     "password": "162534"
 }
 
@@ -16,7 +16,7 @@ POST http://localhost:4000/auth/login
 Content-Type: application/json
 
 {
-    "email": "user2@gmail.com",
+    "email": "user4@gmail.com",
     "password": "162534"
 }
 
@@ -32,7 +32,7 @@ GET http://localhost:4000/post/62e929acae0072fa3fb03166
 
 // ------ Get Posts By Sender ------
 ###
-GET http://localhost:4000/post?sender=User
+GET http://localhost:4000/post?sender=Paul
 
 // ------ Create New Post ------
 ###

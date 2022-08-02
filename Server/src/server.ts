@@ -22,6 +22,8 @@ import auth_route from './routes/auth-routes'
 app.use('/auth', auth_route);
 import post_route from './routes/post-routes'
 app.use('/post', post_route)
+import profile_route from './routes/profile-routes'
+app.use('/profile', profile_route)
 
 import http from 'http';
 const server = http.createServer(app);

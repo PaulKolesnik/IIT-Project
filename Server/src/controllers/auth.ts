@@ -24,7 +24,6 @@ const register = async (req: Request, res: Response) => {
       // validate email/password
       const email = req.body.email;
       const password = req.body.password;
-      const id = req.body._id
 
       if (email == null || email == undefined || password == null || password == undefined) {
             res.status(StatusCodes.BAD_REQUEST);
