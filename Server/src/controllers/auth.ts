@@ -58,6 +58,7 @@ const register = async (req: Request, res: Response) => {
             newUser.refreshToken = refreshToken;
             await newUser.save();
             res.status(StatusCodes.OK).send({
+                  email: user.email,
                   access_token: accessToken,
                   refresh_token: refreshToken,
                   _id: newUser._id,
@@ -97,6 +98,7 @@ const login = async (req: Request, res: Response) => {
             user.refreshToken = refreshToken;
             await user.save();
             res.status(StatusCodes.OK).send({
+                  email: user.email,
                   access_token: accessToken,
                   refresh_token: refreshToken,
                   _id: user._id,
