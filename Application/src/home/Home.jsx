@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
 import LogIn from '../auth/Login'
 import Register from '../auth/Register'
-
+import './home.css'
 class Home extends React.Component {
     constructor(props) {
         super(props)
@@ -15,24 +15,27 @@ class Home extends React.Component {
     }
 
     onSignInClick = () => {
-        this.setState({showLogIn: false})
+        this.setState({ showLogIn: false })
     }
 
     onLogInClick = () => {
-        this.setState({showLogIn: true})
+        this.setState({ showLogIn: true })
     }
 
     render() {
         return (
             <>
-                <ButtonGroup size="lg" className="main-btns" aria-label="Basic example">
-                    <Button className={this.state.showLogIn ? "active-btn": ""} onClick={this.onLogInClick} 
-                        style = {{margin: 5, height:50, width: 300}} > מעבר להתחברות </Button>
-                    <Button className={!this.state.showLogIn ? "active-btn": ""} onClick={this.onSignInClick}
-                        style = {{margin: 5, height:50, width: 300}} > מעבר להרשמה </Button>
+                <ButtonGroup size="lg" className="buttons" aria-label="Basic example">
+                    <Button className={this.state.showLogIn ? "active-btn" : ""} onClick={this.onLogInClick}
+                        style={{ margin: 5, height: 50, width: 250 }} > מעבר להתחברות </Button>
+                    <Button className={!this.state.showLogIn ? "active-btn" : ""} onClick={this.onSignInClick}
+                        style={{ margin: 5, height: 50, width: 250 }} > מעבר להרשמה </Button>
                 </ButtonGroup>
-                {this.state.showLogIn ? <LogIn/> : <Register/>}
-           
+                <div className="auth">
+                    {this.state.showLogIn ? <LogIn /> : <Register />}
+
+                </div>
+
             </>
         );
     };

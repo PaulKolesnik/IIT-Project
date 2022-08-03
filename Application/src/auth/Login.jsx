@@ -61,39 +61,35 @@ const LogIn = (props) => {
 	else
 		return (
 			<Container>
-				<center>
-				<h1>התחברות</h1>
+				<h1>Login</h1>
 				<Form onSubmit={handleSubmit}>
 					<Form.Group controlId='user-email'>
-						<Form.Label>אימייל</Form.Label>
+						<Form.Label>Email</Form.Label>
 						<Form.Control
 							type='text'
 							name='email'
 							placeholder='Enter Email'
-							// value={this.state.email}
 							onChange={handleOnChange}
 							required
-							style={{textAlign: 'center', width:'40%', background:'lightblue'}}
+							style={{ textAlign: 'center', width: '40%', background: 'lightblue' }}
 						/>
 					</Form.Group>
 					<Form.Group controlId='user-password'>
-						<Form.Label>סיסמה</Form.Label>
+						<Form.Label>Password</Form.Label>
 						<Form.Control
 							type='password'
 							name='password'
 							placeholder='Enter Password'
-							// value={this.state.password}
 							onChange={handleOnChange}
 							required
-							style={{textAlign: 'center', width:'40%', background:'lightblue'}}
+							style={{ textAlign: 'center', width: '40%', background: 'lightblue' }}
 						/>
 					</Form.Group>
 					<br />
-					<Button variant='primary' type='submit'>
-						התחבר
+					<Button variant='secondary' type='submit'>
+						Login
 					</Button>
 				</Form>
-				</center>
 			</Container>
 		)
 }

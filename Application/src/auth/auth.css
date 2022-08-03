@@ -1,3 +1,22 @@
-body{
+body {
       background: white;
 }
+
+.container {
+      /* display: flex; */
+      /* justify-content: center; */
+      /* align-items: center; */
+      height: 500px;
+      border: 1px solid rgb(39, 109, 171);
+      margin: auto;
+      width: 100%;
+      box-shadow: 5px 5px 15px 5px rgb(43 190 205);
+      }
+
+      form {
+            width: 50%;
+            margin: auto;
+            border: 4px solid #2961c733;
+            border-radius: 8px;
+            padding: 20px;
+      }
