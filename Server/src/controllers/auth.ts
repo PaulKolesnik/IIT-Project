@@ -1,11 +1,10 @@
-import User = require("../models/user-model")
-import { Request, Response } from "express";
-import { StatusCodes } from "http-status-codes";
-const jwt = require("jsonwebtoken");
+import User from '../models/user-model'
+import { Request, Response } from 'express'
+import { StatusCodes } from 'http-status-codes'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
-const bcrypt = require("bcrypt");
-
-const generateTokens = (userId: string): [string, string] => {
+const generateTokens = (userId): [string, string] => {
       const accessToken = jwt.sign(
             { _id: userId },
             process.env.ACCESS_TOKEN_SECRET,
