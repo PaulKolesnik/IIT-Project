@@ -66,38 +66,43 @@ const Register = (props) => {
 	else
 		return (
 			<Container>
+				<center>
+				<h1>הרשמה</h1>
 				<Form onSubmit={handleSubmit}>
 
 					<Form.Group controlId='user-email'>
-						<Form.Label>Email address</Form.Label>
-						<Form.Control
+						<Form.Label>כתובת אימייל</Form.Label>
+						<Form.Control className='formc'
 							type='email'
-							placeholder='Enter email'
+							placeholder='Enter Email'
 							name='email'
 							onChange={handleOnChange}
 							required
+							style={{textAlign: 'center', width:'40%', background:'lightblue'}}
 						/>
 						<Form.Text style={{ color: '#55633e' }}>
 							We'll never share your email with anyone else.
 						</Form.Text>
 					</Form.Group>
 					<Form.Group controlId='user-password'>
-						<Form.Label>Password</Form.Label>
+						<Form.Label>סיסמה</Form.Label>
 						<Form.Control
 							type='password'
-							placeholder='Enter password'
+							placeholder='Enter Password'
 							name='password'
 							onChange={handleOnChange}
 							required
+							style={{textAlign: 'center', width:'40%', background:'lightblue'}}
 						/>
 						<Form.Text style={{ color: '#55633e' }}>
 							Must include 6 characters
 						</Form.Text>
 					</Form.Group>
 					<Button variant='secondary' type='submit'>
-						Submit
+						הירשם
 					</Button>
 				</Form>
+				</center>
 			</Container>
 		)
 }

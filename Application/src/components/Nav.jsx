@@ -1,10 +1,7 @@
 import { NavLink } from 'react-router-dom';
-
 import React from 'react';
 
-
 class Nav extends React.Component {
-
     render() {
         return (
             <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -16,4 +13,5 @@ class Nav extends React.Component {
         )
     }
 }
+
 export default Nav;
