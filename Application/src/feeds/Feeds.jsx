@@ -35,32 +35,20 @@ class Feeds extends Component {
                               return (
                                     <div className="card col-md-6" key={i}>
                                           <div className="card-body">
-                                                <img
-                                                      src={`${process.env.REACT_APP_API_URL
-                                                            }/post/photo/${post._id}`}
-                                                      alt={post.title}
-                                                      onError={i =>
-                                                            (i.target.src = `${UserImg}`)
-                                                      }
+                                                <img src={`${UserImg}`}
                                                       className="img-thunbnail mb-3"
                                                       style={{ height: "200px", width: "100%" }}
                                                 />
-                                                <h5 className="card-title">{post.title}</h5>
+                                                <p className="font-italic mark">
+                                                      The Sender {" "}
+                                                      {sender}{" "}
+                                                </p>
                                                 <p className="card-text">
-                                                      {post.message}
+                                                      The Message: {post.message}
                                                 </p>
                                                 <br />
-                                                <p className="font-italic mark">
-                                                      Posted by{" "}
 
-                                                      {sender}{" "}
-
-                                                </p>
-                                                <Link
-                                                      to={`/post/${post._id}`}
-                                                      className="btn btn-raised btn-secondary btn-sm">
-                                                      Edit Feed
-                                                </Link>
+                                                <h6>The Content Publish to all users</h6>
                                           </div>
                                     </div>
                               );

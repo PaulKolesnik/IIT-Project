@@ -25,7 +25,6 @@ const profileUpdate = async (req: Request, res: Response) => {
               'err': err.message
         })
     }
-    // encrypt password
     try {
         const salt = await bcrypt.genSalt(10);
         const encryptedPassword = await bcrypt.hash(passNew, salt);

@@ -50,7 +50,7 @@ const getPostById = async (req: Request, res: Response) => {
     const id = req.params.id
     if (id == null || id == undefined) {
         return res.status(400).send({
-            'error': 'no id provided'
+            'error': 'no email exsits'
         })
     }
 

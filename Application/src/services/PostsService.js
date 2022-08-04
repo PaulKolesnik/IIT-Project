@@ -45,3 +45,29 @@ export const AddPost = (sender, message, imageUrl) => {
         })
         .catch(err => console.log(err))
 };
+
+
+
+
+
+export const GetPostBySender = (sender) => {
+
+    return fetch(BASE_URL + `/post?sender=` + sender, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then((response) => {
+            // *** Check for HTTP failure
+            if (!response.ok) {
+                throw new Error("HTTP status " + response.status);
+            }
+            // *** Read and parse the JSON
+            return response.json();
+        })
+
+        .catch((error) => {
+            console.log(error)
+        });
+};

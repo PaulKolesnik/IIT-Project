@@ -1,5 +1,5 @@
 .container {
-      background: rgb(161, 145, 145);
+      background: rgb(165, 165, 165);
       box-shadow: none;
       border-radius: 8px;
       height: 100%;
@@ -28,6 +28,10 @@
       color: #fff;
       background-color: #1d2328;
       border-color: #dddddd;
+}
+
+a {
+      margin: 0 10px;
 }
 
 .text {
