@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { GetAllPosts } from "../services/PostsService"
 import UserImg from '../assets/images/user.jpg'
 import { Link } from 'react-router-dom'
-
+import './feeds.css'
 class Feeds extends Component {
 
       constructor() {
@@ -28,15 +28,12 @@ class Feeds extends Component {
             return (
                   <div className="row">
                         {posts.map((post, i) => {
-                              const posterId = post.postedBy
-                                    ? `/user/${post.postedBy._id}`
-                                    : "";
-                              const posterName = post.postedBy
-                                    ? post.postedBy.name
-                                    : " Unknown";
+                              const sender = post.sender
+                                    ? post.sender
+                                    : "Random User";
 
                               return (
-                                    <div className="card col-md-4" key={i}>
+                                    <div className="card col-md-6" key={i}>
                                           <div className="card-body">
                                                 <img
                                                       src={`${process.env.REACT_APP_API_URL
@@ -50,19 +47,19 @@ class Feeds extends Component {
                                                 />
                                                 <h5 className="card-title">{post.title}</h5>
                                                 <p className="card-text">
-                                                      {post.message.substring(0, 100)}
+                                                      {post.message}
                                                 </p>
                                                 <br />
                                                 <p className="font-italic mark">
                                                       Posted by{" "}
-                                                      <Link to={`${posterId}`}>
-                                                            {posterName}{" "}
-                                                      </Link>
+
+                                                      {sender}{" "}
+
                                                 </p>
                                                 <Link
                                                       to={`/post/${post._id}`}
-                                                      className="btn btn-raised btn-primary btn-sm">
-                                                      Read more
+                                                      className="btn btn-raised btn-secondary btn-sm">
+                                                      Edit Feed
                                                 </Link>
                                           </div>
                                     </div>
@@ -76,9 +73,13 @@ class Feeds extends Component {
             const { posts } = this.state;
             return (
                   <div className="container">
-                        <h1>All Feeds</h1>
+                        <Link
+                              to={`/newPost/`}
+                              className="btn btn-primary custumBtn">
+                              Create New Feed
+                        </Link>
                         <h2 className="mt-5 mb-5">
-                              {!posts.length ? "Waiting to data from Server.." : "Recent Posts"}
+                              {!posts.length ? "Waiting to data from Server.." : "All The Feeds"}
                         </h2>
                         {this.renderPosts(posts)}
 

@@ -1,5 +1,5 @@
-export const LOGIN_USER = 'LOGIN_USER'
-export const LOGOUT_USER = 'LOGOUT_USER'
+export const LOGIN = 'LOGIN_USER'
+export const LOGOUT = 'LOGOUT_USER'
 
 export const logoutUser = () => {
     return dispatch => {
@@ -8,10 +8,10 @@ export const logoutUser = () => {
         localStorage.removeItem('token')
         try {
             dispatch({
-                type: LOGOUT_USER,
+                type: LOGOUT,
             })
         } catch (err) {
-            throw new Error('Login user failed!!!')
+            throw new Error('Failed')
         }
     }
 }
@@ -20,7 +20,7 @@ export const loginUser = (username, id, token) => {
     return dispatch => {
         try {
             dispatch({
-                type: LOGIN_USER,
+                type: LOGIN,
                 userData: {
                     username,
                     id,
@@ -28,7 +28,7 @@ export const loginUser = (username, id, token) => {
                 }
             })
         } catch (err) {
-            throw new Error('Login user failed!!!');
+            throw new Error('Failed');
         }
     }
 }

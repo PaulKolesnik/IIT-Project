@@ -1,0 +1,35 @@
+.container {
+      background: rgb(161, 145, 145);
+      box-shadow: none;
+      border-radius: 8px;
+      height: 100%;
+      width: 100%;
+}
+
+.card {
+      max-width: 350px;
+      margin: 10px;
+}
+
+.row {
+      justify-content: space-between;
+}
+
+.custumBtn {
+      width: 250px;
+      font-size: larger;
+      justify-content: center;
+      text-align: center;
+      margin: 10px auto;
+      display: flex;
+}
+
+.btn-primary {
+      color: #fff;
+      background-color: #1d2328;
+      border-color: #dddddd;
+}
+
+.text {
+      color: white;
+}

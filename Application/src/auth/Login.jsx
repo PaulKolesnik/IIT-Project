@@ -53,8 +53,7 @@ const LogIn = (props) => {
 		return (
 			<Redirect
 				to={{
-					pathname: '/blog',
-					props: { email: inputValues.email },
+					pathname: '/feeds',
 				}}
 			/>
 		)
