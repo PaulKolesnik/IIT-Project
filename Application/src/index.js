@@ -4,12 +4,10 @@ import App from './App'
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux'
 import usersReducer from './store/reducers/users'
-import postsReducer from './store/reducers/posts'
 import ReduxThunk from 'redux-thunk'
 import './index.css'
 const combinedReducer = combineReducers({
     user: usersReducer,
-    posts: postsReducer
 })
 
 const store = createStore(combinedReducer, applyMiddleware(ReduxThunk));

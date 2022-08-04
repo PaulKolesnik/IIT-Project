@@ -13,9 +13,12 @@ db.on('error', (error) => {
 db.once('open', () => {
     console.log('Connected to MongoDB')
 })
+const cors = require("cors");
 
+app.use(cors());
+app.options('*', cors());
 import bodyparser from 'body-parser'
-app.use(bodyparser.urlencoded({extended: true, limit: '1mb'}))
+app.use(bodyparser.urlencoded({ extended: true, limit: '12mb' }))
 app.use(bodyparser.json())
 
 import auth_route from './routes/auth-routes'
@@ -24,6 +27,8 @@ import post_route from './routes/post-routes'
 app.use('/post', post_route)
 import profile_route from './routes/profile-routes'
 app.use('/profile', profile_route)
+
+
 
 import http from 'http';
 const server = http.createServer(app);

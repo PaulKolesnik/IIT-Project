@@ -8,7 +8,7 @@ const getAllPosts = async (req: Request, res: Response) => {
         const sender = req.query.sender
         let posts
         if (sender != null || sender != undefined) {
-            posts = await Post.find({'sender':sender})
+            posts = await Post.find({ 'sender': sender })
         }
         else {
             posts = await Post.find()
@@ -81,7 +81,7 @@ const deletePostById = async (req: Request, res: Response) => {
     }
 
     try {
-        await Post.deleteOne({_id: req.params.id})
+        await Post.deleteOne({ _id: req.params.id })
         res.status(200).send()
     }
     catch (err) {
@@ -97,9 +97,9 @@ const updatePost = async (req: Request, res: Response) => {
     const postMessage = req.body.message
     if (!!postId && !!postMessage) {
         try {
-            const post = await Post.find({_id: postId})
-            if(!post) {
-                await Post.findOneAndUpdate({_id: postId}, {message: postMessage})
+            const post = await Post.find({ _id: postId })
+            if (!post) {
+                await Post.findOneAndUpdate({ _id: postId }, { message: postMessage })
                 return res.status(StatusCodes.OK).send({
                     'message': 'post updated'
                 })
@@ -107,20 +107,20 @@ const updatePost = async (req: Request, res: Response) => {
         }
         catch (err) {
             return res.status(StatusCodes.BAD_REQUEST).send({
-                error: err.message 
+                error: err.message
             });
         }
     }
-    return res.status(StatusCodes.BAD_REQUEST).send({ 
-        error: "Didnt Get Post ID OR Post Message" 
+    return res.status(StatusCodes.BAD_REQUEST).send({
+        error: "Didnt Get Post ID OR Post Message"
     });
 }
 
-export = 
-{
-    getAllPosts, 
-    createNewPost,
-    getPostById,
-    deletePostById,
-    updatePost
-}
+export =
+    {
+        getAllPosts,
+        createNewPost,
+        getPostById,
+        deletePostById,
+        updatePost
+    }
