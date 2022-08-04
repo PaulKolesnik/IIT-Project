@@ -1,17 +1,23 @@
-import { NavLink } from 'react-router-dom';
-import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
-class Nav extends React.Component {
-    render() {
-        return (
-            <nav className="navbar navbar-expand navbar-dark bg-dark">
-                <div className="navbar-nav">
-                    <NavLink to="/" className="nav-item nav-link">Home</NavLink>
-                    <button className="btn btn-link nav-item nav-link">Logout</button>
-                </div>
-            </nav>
-        )
-    }
+function ColorSchemesExample() {
+  return (
+    <>
+      <Navbar fixed='bottom' bg="primary" variant="dark" sticky='top' style={{height:150}}>
+        <Container style={{height:100}}>
+          <Navbar.Brand href="#home">Posts Application</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="../App.jsx">Home Page</Nav.Link>
+            <Nav.Link href="#features">Log Out</Nav.Link>
+            <Nav.Link href="../components/AllPosts.jsx">All Posts</Nav.Link>
+            <Nav.Link href="#allposts">Add New Post</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+    </>
+  );
 }
 
-export default Nav;
+export default ColorSchemesExample;
