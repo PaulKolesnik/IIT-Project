@@ -20,7 +20,7 @@ class App extends React.Component {
 
                     </Switch>
                 <div className="div">
-                    
+                    <Nav />
                 </div>
                 </Router>
             </div>
